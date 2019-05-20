@@ -75,34 +75,35 @@ const HTML_TEMPLATE = `
 </ion-footer>
 `;
 
-const CSS_STYLE = `
+const CSS_STYLES = `
 ion-content{
   font-size: 14px;
   color: #666;
   --ion-text-color: #666;
-  .care-text {
-      font-size: 95%;
-      font-weight: 700;
-      text-align: center;
-  }
-  .short-question-text{
-      font-size: 110%;
-      font-weight: 700;
-      text-align: center;
-  }
-  .age-check {
-      font-size: 14px;
-  }
+}
+.care-text {
+  font-size: 95%;
+  font-weight: 700;
+  text-align: center;
+}
+.short-question-text{
+  font-size: 110%;
+  font-weight: 700;
+  text-align: center;
+}
+.age-check {
+  font-size: 14px;
 }
 .decline-button{
-  margin-top: 4px;
+  margin-top: 8px;
 }
-`;
+`
+;
 
 @Component({
-  selector: 'app-privacy-policy-consent',
+  selector: 'gt-privacy-policy-consent',
   template: HTML_TEMPLATE,
-  styles: [CSS_STYLE],
+  styles: [CSS_STYLES],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
