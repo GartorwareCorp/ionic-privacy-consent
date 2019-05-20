@@ -1,6 +1,6 @@
 {
   "name": "@gartorware/ionic-privacy-policy-consent",
-  "version": "0.4.5",
+  "version": "1.0.0",
   "description": "Reusable ionic dialog component for requesting privacy policy consent",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
