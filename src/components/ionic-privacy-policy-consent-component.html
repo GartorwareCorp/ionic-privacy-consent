@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titleText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p class="care-text">{{careText}}</p>
+
+  <p class="message-text" [innerHtml]="alertMessageText"></p>
+
+  <p class="short-question-text" *ngIf="options.shortQuestion">{{shortQuestionText}}</p>
+
+  <p class="age-text" *ngIf="!options.explicitAgeConfirmation">{{ageText}}</p>
+  <ion-item class="age-check" *ngIf="options.explicitAgeConfirmation">
+    <ion-label class="ion-text-wrap">{{explicitAgeText}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="explicitAgeConfirmation">
+    </ion-checkbox>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer padding>
+  <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
+    <ion-label>{{acceptText}}</ion-label>
+  </ion-button>
+  <ion-button fill="clear" expand="block" color="warning" (click)="onClickDecline()" class="decline-button">
+    <ion-label>{{declineText}}<br>
+    </ion-label>
+  </ion-button>
+  <ion-button fill="clear" expand="block" color="danger" (click)="onClickReject()" class="reject-button">
+    <ion-label>{{exitText}}</ion-label>
+  </ion-button>
+</ion-footer>

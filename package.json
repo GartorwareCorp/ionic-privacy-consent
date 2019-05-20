@@ -1,6 +1,6 @@
 {
-  "name": "ionic-privacy-policy-consent",
-  "version": "0.0.1",
+  "name": "@gartorware/ionic-privacy-policy-consent",
+  "version": "0.4.0",
   "description": "Reusable ionic dialog component for requesting privacy policy consent",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "ng": "ng",
-    "build": "rm -rf aot dist && npm run ng",
+    "ngc": "ngc",
+    "build": "rm -rf aot dist && npm run ngc",
     "publishPackage": "npm run build && npm publish"
   },
   "repository": {
@@ -28,12 +28,31 @@
     "@angular/compiler": "^7.2.2",
     "@angular/compiler-cli": "^7.2.2",
     "@angular/core": "^7.2.13",
+    "@angular/forms": "^7.2.13",
+    "@angular/router": "^7.2.13",
     "@angular/platform-browser": "^7.2.13",
     "@angular/platform-browser-dynamic": "^7.2.13",
     "@ionic/angular": "^4.3.0",
+    "@ionic/core": "^4.3.0",
     "@types/node": "^10.12.0",
-    "zone.js": "^0.9.1",
     "rxjs": "^6.4.0",
-    "typescript": "^3.2.4"
+    "typescript": "3.2.4",
+    "zone.js": "^0.9.1"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.2.13",
+    "@angular/compiler": "^7.2.2",
+    "@angular/compiler-cli": "^7.2.2",
+    "@angular/core": "^7.2.13",
+    "@angular/forms": "^7.2.13",
+    "@angular/router": "^7.2.13",
+    "@angular/platform-browser": "^7.2.13",
+    "@angular/platform-browser-dynamic": "^7.2.13",
+    "@ionic/angular": "^4.3.0",
+    "@ionic/core": "^4.3.0",
+    "@types/node": "^10.12.0",
+    "rxjs": "^6.4.0",
+    "typescript": "3.2.4",
+    "zone.js": "^0.9.1"
   }
 }
