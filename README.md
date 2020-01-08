@@ -8,7 +8,12 @@ Develop your module like any other Angular 2 module. Then, run `npm run build` t
 
 When you're ready to publish to npm, run `npm publishPackage`.
 
-If you'd like to test this package, run `npm install ionic-module-template`
+To use it in another project while developing use https://github.com/marcj/npm-local-development#readme
+Prepare .links.json in root project app and then:
+```
+cd myproject
+npm-local-development ./
+```
 
 ## npm link
 
