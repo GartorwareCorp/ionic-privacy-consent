@@ -19,3 +19,7 @@ ion-content{
 .decline-button{
     margin-top: 8px;
 }
+.consent-alert .alert-message.sc-ion-alert-md,
+.consent-alert .alert-message.sc-ion-alert-ios {
+    font-size: 14px;
+}

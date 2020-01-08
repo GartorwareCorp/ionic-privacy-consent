@@ -4,13 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
   <p class="care-text">{{careText}}</p>
 
   <p class="message-text" [innerHtml]="alertMessageText"></p>
 
   <p class="short-question-text" *ngIf="options.shortQuestion">{{shortQuestionText}}</p>
+
+  <p class="tos-text" [innerHtml]="tosText" *ngIf="options.tos"></p>
 
   <p class="age-text" *ngIf="!options.explicitAgeConfirmation">{{ageText}}</p>
   <ion-item class="age-check" *ngIf="options.explicitAgeConfirmation">
@@ -21,7 +23,7 @@
 
 </ion-content>
 
-<ion-footer padding>
+<ion-footer class="ion-padding">
   <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
     <ion-label>{{acceptText}}</ion-label>
   </ion-button>

@@ -8,6 +8,7 @@ export type IonicPrivacyPolicyConsentLangs = "en" | "es";
 export interface IonicPrivacyPolicyConsentOptions {
   language?: IonicPrivacyPolicyConsentLangs,
   privacyPolicy?: string,
+  tos?: string,
   paidVersion?: boolean, //TODO
   explicitAgeConfirmation?: boolean,
   shortQuestion?: boolean,
@@ -44,13 +45,15 @@ const HTML_TEMPLATE = `
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
   <p class="care-text">{{careText}}</p>
 
   <p class="message-text" [innerHtml]="alertMessageText"></p>
 
   <p class="short-question-text" *ngIf="options.shortQuestion">{{shortQuestionText}}</p>
+
+  <p class="tos-text" [innerHtml]="tosText" *ngIf="options.tos"></p>
 
   <p class="age-text" *ngIf="!options.explicitAgeConfirmation">{{ageText}}</p>
   <ion-item class="age-check" *ngIf="options.explicitAgeConfirmation">
@@ -61,7 +64,7 @@ const HTML_TEMPLATE = `
 
 </ion-content>
 
-<ion-footer padding>
+<ion-footer class="ion-padding">
   <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
     <ion-label>{{acceptText}}</ion-label>
   </ion-button>
@@ -97,8 +100,12 @@ ion-content{
 .decline-button{
   margin-top: 8px;
 }
+.consent-alert .alert-message.sc-ion-alert-md,
+.consent-alert .alert-message.sc-ion-alert-ios {
+  font-size: 14px;
+}
 `
-;
+  ;
 
 @Component({
   selector: 'gt-privacy-policy-consent',
@@ -121,6 +128,8 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
   exitText;
   urlLabelText;
   alertMessageText;
+  tosText;
+  tosUrlLabelText;
 
   private defaultOpt: IonicPrivacyPolicyConsentOptions = {
     language: 'en',
@@ -153,15 +162,25 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
     this.declineText = this.translate.instant("DECLINE");
     this.exitText = this.translate.instant("EXIT");
     this.urlLabelText = this.translate.instant("PRIVACY_URL_LABEL");
-
-    let messageText = this.translate.instant("MESSAGE");
+    this.tosText = this.translate.instant("TOS_CONFIRMATION");
+    this.tosUrlLabelText = this.translate.instant("TOS_URL_LABEL");
+  
+    // Privacy Policy text and link
+    const messageText = this.translate.instant("MESSAGE");
     if (this.options.privacyPolicy && !this.options.privacyPolicy.startsWith("https://") && !this.options.privacyPolicy.startsWith("http://")) {
       this.options.privacyPolicy = "http://" + this.options.privacyPolicy;
     }
-    let privacyLink = this.options.privacyPolicy ? '<a target="_blank" href="' + this.options.privacyPolicy + '">' + this.urlLabelText + '</a>' : this.urlLabelText;
-
+    const privacyLink = this.options.privacyPolicy ? '<a target="_blank" href="' + this.options.privacyPolicy + '">' + this.urlLabelText + '</a>' : this.urlLabelText;
     this.alertMessageText = this.sanitized.bypassSecurityTrustHtml(messageText.replace('##PRIVACY_PLACEHOLDER##', privacyLink));
 
+    // TOS text and link
+    if (this.options.tos && !this.options.tos.startsWith("https://") && !this.options.tos.startsWith("http://")) {
+      this.options.tos = "http://" + this.options.tos;
+    }
+    const tosLink = this.options.tos ? '<a target="_blank" href="' + this.options.tos + '">' + this.tosUrlLabelText + '</a>' : this.tosUrlLabelText;
+    this.tosText = this.sanitized.bypassSecurityTrustHtml(this.tosText.replace('##TOS_PLACEHOLDER##', tosLink));
+
+    // Back button 
     this.ngBackButtonSubscription = this.platform.backButton.subscribeWithPriority(1, () => {
       let chooseActionMsg = this.translate.instant('CHOOSE_ACTION');
       this.toastCtrl.create({ message: chooseActionMsg, duration: 2500 }).then(toast => toast.present());
@@ -190,10 +209,17 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
       this.toastCtrl.create({ message: explicitAgeConfirmationWarningText, duration: 2500 }).then(toast => toast.present());
       return;
     }
+
     this.dismiss(IonicPrivacyPolicyConsentResult.PERSONAL_CONSENT);
   }
 
   async onClickDecline() {
+    if (this.options.explicitAgeConfirmation && !this.explicitAgeConfirmation) {
+      const explicitAgeConfirmationWarningText = this.translate.instant('EXPLICIT_AGE_CONFIRMATION_WARNING');
+      this.toastCtrl.create({ message: explicitAgeConfirmationWarningText, duration: 2500 }).then(toast => toast.present());
+      return;
+    }
+
     const areYouSureText = this.translate.instant("ARE_YOU_SURE");
     const decline2Text = this.translate.instant("DECLINE_2");
     const goBackText = this.translate.instant("GO_BACK");
