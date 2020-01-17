@@ -1,21 +1,23 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Platform, ModalController, ToastController, AlertController } from '@ionic/angular';
-import { TranslateService } from '../internal-providers/translate';
+import { Platform, ModalController, ToastController } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TranslateService } from '../../internal-providers/translate';
+import { IonicPrivacyConsentManageComponent } from '../ionic-privacy-consent-manage/ionic-privacy-consent-manage-component';
 
-export type IonicPrivacyPolicyConsentLangs = "en" | "es";
+export type IonicPrivacyConsentLangs = "en" | "es";
 
-export interface IonicPrivacyPolicyConsentOptions {
-  language?: IonicPrivacyPolicyConsentLangs,
+export interface IonicPrivacyConsentOptions {
+  language?: IonicPrivacyConsentLangs,
   privacyPolicy?: string,
   tos?: string,
   paidVersion?: boolean, //TODO
   explicitAgeConfirmation?: boolean,
   shortQuestion?: boolean,
-  cssClass?: string | string[]
+  cssClass?: string | string[],
+  forceShow?: boolean
 }
 
-export enum IonicPrivacyPolicyConsentResult {
+export enum IonicPrivacyConsentResult {
   /**
      * users consent is unknown, it needs to be requests
      */
@@ -108,30 +110,30 @@ ion-content{
   ;
 
 @Component({
-  selector: 'gt-privacy-policy-consent',
+  selector: 'gt-privacy-consent',
   template: HTML_TEMPLATE,
   styles: [CSS_STYLES],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
+export class IonicPrivacyConsentComponent implements OnInit, OnDestroy {
 
-  options: IonicPrivacyPolicyConsentOptions;
+  options: IonicPrivacyConsentOptions;
   explicitAgeConfirmation: boolean = false;
 
-  titleText;
-  careText;
-  shortQuestionText;
-  ageText;
-  explicitAgeText;
-  acceptText;
-  declineText;
-  exitText;
-  urlLabelText;
-  alertMessageText;
-  tosText;
-  tosUrlLabelText;
+  titleText: string;
+  careText: string;
+  shortQuestionText: string;
+  ageText: string;
+  explicitAgeText: string;
+  acceptText: string;
+  declineText: string;
+  exitText: string;
+  urlLabelText: string;
+  alertMessageText: any;
+  tosText: any;
+  tosUrlLabelText: string;
 
-  private defaultOpt: IonicPrivacyPolicyConsentOptions = {
+  private defaultOpt: IonicPrivacyConsentOptions = {
     language: 'en',
     explicitAgeConfirmation: false,
     shortQuestion: true,
@@ -141,7 +143,6 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
   constructor(private cd: ChangeDetectorRef,
     private translate: TranslateService,
     private platform: Platform,
-    private alertCtrl: AlertController,
     private modalCtrl: ModalController,
     private toastCtrl: ToastController,
     private sanitized: DomSanitizer) { }
@@ -164,7 +165,7 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
     this.urlLabelText = this.translate.instant("PRIVACY_URL_LABEL");
     this.tosText = this.translate.instant("TOS_CONFIRMATION");
     this.tosUrlLabelText = this.translate.instant("TOS_URL_LABEL");
-  
+
     // Privacy Policy text and link
     const messageText = this.translate.instant("MESSAGE");
     if (this.options.privacyPolicy && !this.options.privacyPolicy.startsWith("https://") && !this.options.privacyPolicy.startsWith("http://")) {
@@ -200,7 +201,7 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
   }
 
   onClickReject() {
-    this.dismiss(IonicPrivacyPolicyConsentResult.NO_CONSENT);
+    this.dismiss(IonicPrivacyConsentResult.NO_CONSENT);
   }
 
   onClickAgree() {
@@ -210,7 +211,7 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.dismiss(IonicPrivacyPolicyConsentResult.PERSONAL_CONSENT);
+    this.dismiss(IonicPrivacyConsentResult.PERSONAL_CONSENT);
   }
 
   async onClickDecline() {
@@ -220,40 +221,24 @@ export class IonicPrivacyPolicyConsentComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const areYouSureText = this.translate.instant("ARE_YOU_SURE");
-    const decline2Text = this.translate.instant("DECLINE_2");
-    const goBackText = this.translate.instant("GO_BACK");
-    const declineDescrText = this.translate.instant("DECLINE_DESCR");
-
-    let alert = await this.alertCtrl.create({
-      cssClass: "consent-alert",
+    let modal = await this.modalCtrl.create({
+      component: IonicPrivacyConsentManageComponent,
+      componentProps: {
+        options: this.options
+      },
+      cssClass: this.options.cssClass || '',
       backdropDismiss: false,
       keyboardClose: false,
-      header: areYouSureText,
-      message: declineDescrText,
-      buttons: [
-        {
-          text: decline2Text,
-          cssClass: 'decline-2-button',
-          handler: () => {
-            this.onClickDecline2();
-          }
-        },
-        {
-          text: goBackText,
-          cssClass: 'go-back-button',
-          handler: () => { }
-        }
-      ]
     });
-    alert.present();
-  }
+    modal.present();
 
-  onClickDecline2() {
-    let result = this.options.explicitAgeConfirmation && !this.explicitAgeConfirmation ?
-      IonicPrivacyPolicyConsentResult.NON_PERSONAL_CONSENT_ONLY_UNDER_16
-      : IonicPrivacyPolicyConsentResult.NON_PERSONAL_CONSENT_ONLY;
-    this.dismiss(result);
+    let declineData = await modal.onDidDismiss();
+    if (declineData.data && declineData.data === 'decline') {
+      let result = this.options.explicitAgeConfirmation && !this.explicitAgeConfirmation ?
+        IonicPrivacyConsentResult.NON_PERSONAL_CONSENT_ONLY_UNDER_16
+        : IonicPrivacyConsentResult.NON_PERSONAL_CONSENT_ONLY;
+      this.dismiss(result);
+    }
   }
 
 }

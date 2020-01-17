@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titleText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <p>{{descrText}}</p>
+  <p>{{descr2Text}}</p>
+  <p>{{descr3Text}}</p>
+
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button fill="solid" expand="block" color="primary" (click)="dismiss()" class="go-back-button">
+    <ion-label>{{backBtnText}}</ion-label>
+  </ion-button>
+  <ion-button fill="clear" expand="block" color="warning" (click)="onClickDecline2()" class="decline-2-button">
+    <ion-label>{{declineBtnText}}</ion-label>
+  </ion-button>
+</ion-footer>

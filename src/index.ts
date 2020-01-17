@@ -1,3 +1,3 @@
-export * from './ionic-privacy-policy-consent.module';
-export * from './providers/ionic-privacy-policy-consent';
-export * from './components/ionic-privacy-policy-consent-component';
+export * from './ionic-privacy-consent.module';
+export * from './providers/ionic-privacy-consent';
+export * from './components/ionic-privacy-consent/ionic-privacy-consent-component';
