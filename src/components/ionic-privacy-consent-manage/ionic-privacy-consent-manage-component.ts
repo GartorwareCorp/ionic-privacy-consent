@@ -72,7 +72,7 @@ export class IonicPrivacyConsentManageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  dismiss(result) {
+  dismiss(result?) {
     this.modalCtrl.dismiss(result);
   }
 
