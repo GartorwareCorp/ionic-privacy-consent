@@ -1,10 +1,34 @@
-# Ionic Module Template
+# IonicLicenses
 
-This is a template for building your own reusable Angular2/Ionic2 module using TypeScript. Supports Angular's ngc and Ahead-of-Time compiling out of the box.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Developing
 
-Develop your module like any other Angular 2 module. Then, run `npm run build` to build a local copy.
+Develop your module like any other Angular module. Then, run `npm run build -- --prod` to build a local copy.
 
 When you're ready to publish to npm, run `npm publishPackage`.
 
@@ -19,7 +43,7 @@ npm-local-development ./
 
 Currently, modules must be published to npm. `npm link` packages will not install properly with our webpack confing (something on our list). If you can't push private code to npm, other options are a private npm repo/npm enterprise, or `npm install` from a git repo.
 
-## Using your module in an Ionic 2 app
+## Using your module in an Ionic app
 
 ```typescript
 import { NgModule } from '@angular/core';

@@ -18,11 +18,6 @@ import { IonicPrivacyConsentManageComponent } from './components/ionic-privacy-c
     IonicPrivacyConsentComponent,
     IonicPrivacyConsentManageComponent
   ],
-  entryComponents: [
-    // If not lazy loaded
-    IonicPrivacyConsentComponent,
-    IonicPrivacyConsentManageComponent
-  ],
   exports: [
     // export the component(s) that you want others to be able to use
     IonicPrivacyConsentComponent,
