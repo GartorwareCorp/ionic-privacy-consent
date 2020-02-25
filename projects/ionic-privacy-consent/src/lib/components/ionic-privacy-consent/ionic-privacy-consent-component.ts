@@ -237,7 +237,7 @@ export class IonicPrivacyConsentComponent implements OnInit, OnDestroy {
       let result = this.options.explicitAgeConfirmation && !this.explicitAgeConfirmation ?
         IonicPrivacyConsentResult.NON_PERSONAL_CONSENT_ONLY_UNDER_16
         : IonicPrivacyConsentResult.NON_PERSONAL_CONSENT_ONLY;
-      this.dismiss(result);
+      setTimeout(() => this.dismiss(result), 100);
     }
   }
 
