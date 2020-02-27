@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Develop your module like any other Angular module. Then, run `npm run build -- --prod` to build a local copy.
 
-When you're ready to publish to npm, run `npm publishPackage`.
+When you're ready to publish to npm, cd to `dist` folder then run `npm publish`.
 
 To use it in another project while developing use https://github.com/marcj/npm-local-development#readme
 Prepare .links.json in root project app and then:
