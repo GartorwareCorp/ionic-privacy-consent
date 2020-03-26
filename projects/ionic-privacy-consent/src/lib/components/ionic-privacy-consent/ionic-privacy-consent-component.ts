@@ -69,16 +69,18 @@ const HTML_TEMPLATE = `
 </ion-content>
 
 <ion-footer class="ion-padding-start ion-padding-end">
-  <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
-    <ion-label>{{acceptText}}</ion-label>
-  </ion-button>
-  <ion-button fill="clear" expand="block" color="warning" (click)="onClickDecline()" class="decline-button">
-    <ion-label>{{declineText}}<br>
-    </ion-label>
-  </ion-button>
-  <ion-button fill="clear" expand="block" color="danger" (click)="onClickReject()" class="reject-button">
-    <ion-label>{{exitText}}</ion-label>
-  </ion-button>
+  <ion-toolbar>
+    <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
+      <ion-label>{{acceptText}}</ion-label>
+    </ion-button>
+    <ion-button fill="clear" expand="block" color="warning" (click)="onClickDecline()" class="decline-button">
+      <ion-label>{{declineText}}<br>
+      </ion-label>
+    </ion-button>
+    <ion-button fill="clear" expand="block" color="danger" (click)="onClickReject()" class="reject-button">
+      <ion-label>{{exitText}}</ion-label>
+    </ion-button>
+  </ion-toolbar>
 </ion-footer>
 `;
 
