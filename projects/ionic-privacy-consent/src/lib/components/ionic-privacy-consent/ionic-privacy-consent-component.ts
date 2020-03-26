@@ -68,7 +68,7 @@ const HTML_TEMPLATE = `
 
 </ion-content>
 
-<ion-footer>
+<ion-footer class="ion-padding-start ion-padding-end">
   <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
     <ion-label>{{acceptText}}</ion-label>
   </ion-button>
@@ -229,6 +229,8 @@ export class IonicPrivacyConsentComponent implements OnInit, OnDestroy {
         options: this.options
       },
       cssClass: this.options.cssClass || '',
+      enterAnimation: this.options.enterAnimation,
+      leaveAnimation: this.options.leaveAnimation,
       backdropDismiss: false,
       keyboardClose: false,
     });
