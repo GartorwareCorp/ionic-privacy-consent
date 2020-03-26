@@ -14,6 +14,8 @@ export interface IonicPrivacyConsentOptions {
   explicitAgeConfirmation?: boolean,
   shortQuestion?: boolean,
   cssClass?: string | string[],
+  enterAnimation?: any,
+  leaveAnimation?: any,
   forceShow?: boolean
 }
 
@@ -66,7 +68,7 @@ const HTML_TEMPLATE = `
 
 </ion-content>
 
-<ion-footer class="ion-padding">
+<ion-footer>
   <ion-button fill="solid" expand="block" color="primary" (click)="onClickAgree()" class="agree-button">
     <ion-label>{{acceptText}}</ion-label>
   </ion-button>

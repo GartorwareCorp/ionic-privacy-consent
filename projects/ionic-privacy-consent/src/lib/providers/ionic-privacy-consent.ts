@@ -34,6 +34,8 @@ export class IonicPrivacyConsent {
         options: opt
       },
       cssClass: opt.cssClass || '',
+      enterAnimation: opt.enterAnimation,
+      leaveAnimation: opt.leaveAnimation,
       backdropDismiss: false,
       keyboardClose: false
     });

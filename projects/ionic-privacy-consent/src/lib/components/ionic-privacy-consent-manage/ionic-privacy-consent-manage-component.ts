@@ -18,7 +18,7 @@ const HTML_TEMPLATE = `
 
 </ion-content>
 
-<ion-footer class="ion-padding">
+<ion-footer>
   <ion-button fill="solid" expand="block" color="primary" (click)="dismiss()" class="go-back-button">
     <ion-label>{{backBtnText}}</ion-label>
   </ion-button>
