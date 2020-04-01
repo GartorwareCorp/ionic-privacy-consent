@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '../../internal-providers/translate';
 import { IonicPrivacyConsentManageComponent } from '../ionic-privacy-consent-manage/ionic-privacy-consent-manage-component';
 
-export type IonicPrivacyConsentLangs = "en" | "es";
+export type IonicPrivacyConsentLangs = "en" | "es" | "it";
 
 export interface IonicPrivacyConsentOptions {
   language?: IonicPrivacyConsentLangs,
