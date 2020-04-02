@@ -55,19 +55,19 @@ const i18n = {
     "CHOOSE_ACTION": "Per favore, scegli un'azione",
     "DECLINE": "Declino",
     "DECLINE_2": "Declino",
-    "DECLINE_DESCR": "Comprendo che visualizzo ancora lo stesso numero di annunci, ma potrebbero non essere pertinenti ai miei interessi.",
+    "DECLINE_DESCR": "Comprendo che visualizzerò ancora lo stesso numero di annunci, ma potrebbero non essere pertinenti ai miei interessi.",
     "DECLINE_DESCR_2": "Inoltre, capisco che alcuni dati, tra cui identificatori di dispositivi tra gli altri, potrebbero ancora essere raccolti per offrire e monitorare il servizio, personalizzare i contenuti (senza pubblicità), fornire funzionalità di social media e analisi anonime.",
     "DECLINE_DESCR_3": "Accetto ancora i Termini di servizio e confermo di avere più di 16 anni.",
-    "EXIT": "Non sono d'accordo Esci adesso.",
+    "EXIT": "Non sono d'accordo. Esci adesso.",
     "EXPLICIT_AGE_CONFIRMATION": "Ho più di 16 anni",
     "EXPLICIT_AGE_CONFIRMATION_WARNING": "Conferma di avere più di 16 anni",
     "GO_BACK": "Torna Indietro",
-    "MESSAGE": "",
+    "MESSAGE": "Questa app raccoglie alcuni dati per il suo funzionamento, tra cui gli identificatori del dispositivo insieme ad altri dati. Tali dati vengono utilizzati per offrire il servizio, personalizzare contenuti e annunci, fornire funzionalità di social media e analisi anonime. Inoltre, alcune di queste informazioni (non dati personali) potrebbero essere condivisi con i nostri partner pubblicitari e di analisi. Per favore, consulta il nostro ##PRIVACY_PLACEHOLDER## per tutti i dettagli su come i tuoi dati saranno protetti e gestiti.",
     "PAID_OR_FREE": "Manteniamo questa app utilizzando servizi di terze parti",
     "PRIVACY_URL_LABEL": "POLITICA SULLA RISERVATEZZA",
     "SHORT_QUESTION": "Possiamo continuare a utilizzare i tuoi dati per questi scopi?",
     "TITLE": "ToS e privacy",
-    "TOS_CONFIRMATION": "Continuando accetti il nostro ## TOS_PLACEHOLDER ##.",
+    "TOS_CONFIRMATION": "Continuando accetti il nostro ##TOS_PLACEHOLDER##.",
     "TOS_URL_LABEL": "Termini di Servizio"
   }
 };
