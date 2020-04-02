@@ -57,7 +57,7 @@ const i18n = {
     "DECLINE_2": "Declino",
     "DECLINE_DESCR": "Comprendo che visualizzerò ancora lo stesso numero di annunci, ma potrebbero non essere pertinenti ai miei interessi.",
     "DECLINE_DESCR_2": "Inoltre, capisco che alcuni dati, tra cui identificatori di dispositivi tra gli altri, potrebbero ancora essere raccolti per offrire e monitorare il servizio, personalizzare i contenuti (senza pubblicità), fornire funzionalità di social media e analisi anonime.",
-    "DECLINE_DESCR_3": "Accetto ancora i Termini di servizio e confermo di avere più di 16 anni.",
+    "DECLINE_DESCR_3": "Accetto ancora i Termini di Servizio e confermo di avere più di 16 anni.",
     "EXIT": "Non sono d'accordo. Esci adesso.",
     "EXPLICIT_AGE_CONFIRMATION": "Ho più di 16 anni",
     "EXPLICIT_AGE_CONFIRMATION_WARNING": "Conferma di avere più di 16 anni",
