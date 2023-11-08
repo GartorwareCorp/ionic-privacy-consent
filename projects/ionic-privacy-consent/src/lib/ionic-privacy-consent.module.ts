@@ -25,7 +25,7 @@ import { IonicPrivacyConsentManageComponent } from './components/ionic-privacy-c
   ]
 })
 export class IonicPrivacyConsentModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<IonicPrivacyConsentModule> {
     return {
       ngModule: IonicPrivacyConsentModule,
       providers: [IonicPrivacyConsent, TranslateService]
